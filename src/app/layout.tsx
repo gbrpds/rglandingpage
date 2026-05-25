@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Sora, Manrope, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import ScrollAnimator from "@/components/ScrollAnimator";
+import CustomCursor from "@/components/CustomCursor";
 
 const sora = Sora({
   subsets: ["latin"],
@@ -30,11 +31,10 @@ export const metadata: Metadata = {
   description:
     "Estruturamos a operação comercial de médicos com clínica própria para gerar um fluxo previsível de consultas particulares. Crescimento com método.",
   keywords:
-    "marketing médico, assessoria médica, crescimento clínica, consultas particulares, marketing para médicos, Porto Alegre",
+    "marketing médico, assessoria médica, crescimento clínica, consultas particulares, marketing para médicos",
   openGraph: {
     title: "RG Performance — Assessoria de Crescimento para Médicos",
-    description:
-      "Menos achismo. Mais estrutura, método e previsibilidade. Diagnóstico gratuito.",
+    description: "Menos achismo. Mais estrutura, método e previsibilidade.",
     type: "website",
   },
 };
@@ -50,6 +50,7 @@ export default function RootLayout({
       className={`${sora.variable} ${manrope.variable} ${playfair.variable}`}
     >
       <body>
+        <CustomCursor />
         {children}
         <ScrollAnimator />
       </body>

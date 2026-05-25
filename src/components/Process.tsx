@@ -5,32 +5,48 @@ const steps = [
   {
     number: "1",
     title: "Diagnóstico Gratuito",
-    desc: "Em uma conversa de 30 minutos, mapeamos sua situação atual, identificamos os gargalos e avaliamos o potencial da sua clínica. Sem compromisso.",
+    desc: "Em 30 minutos mapeamos sua situação atual, identificamos os gargalos e avaliamos o potencial da sua clínica. Sem compromisso.",
     badge: "30 min · Gratuito",
+    icon: (
+      <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <circle cx="12" cy="12" r="10" />
+        <path d="M9 12l2 2 4-4" />
+      </svg>
+    ),
   },
   {
     number: "2",
     title: "Proposta Personalizada",
-    desc: "Desenvolvemos um plano de ação específico para a sua especialidade, região e objetivos. Sem fórmula pronta — cada médico tem um caminho único.",
+    desc: "Um plano de ação específico para a sua especialidade, região e objetivos. Sem fórmula pronta — cada médico tem um caminho único.",
     badge: "Estratégia sob medida",
+    icon: (
+      <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+        <path d="M14 2v6h6M9 13h6M9 17h4" />
+      </svg>
+    ),
   },
   {
     number: "3",
     title: "Implementação + Escala",
-    desc: "Executamos o Método RG com acompanhamento semanal, relatórios de métricas e otimização contínua. Você acompanha cada número em tempo real.",
+    desc: "Executamos o Método RG com acompanhamento semanal, relatórios de métricas e otimização contínua. Você acompanha cada número.",
     badge: "Acompanhamento semanal",
+    icon: (
+      <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="M3 17l4-5 4 3 5-7 5 4" />
+        <path d="M21 21H3" />
+      </svg>
+    ),
   },
 ];
 
 export default function Process() {
   return (
-    <section
-      id="como-comecar"
-      className="relative py-24 px-6 overflow-hidden"
-    >
-      {/* Glow center */}
+    <section id="como-comecar" className="relative py-24 px-6 overflow-hidden">
+      {/* Background glow */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-rg-accent/[0.03] rounded-full blur-[120px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-rg-accent/[0.04] rounded-full blur-[120px]" />
+        <div className="absolute inset-0 dot-grid opacity-30" />
       </div>
 
       <div className="max-w-6xl mx-auto">
@@ -47,26 +63,22 @@ export default function Process() {
         </div>
 
         {/* Steps */}
-        <div className="grid md:grid-cols-3 gap-4 mb-12">
+        <div className="relative grid md:grid-cols-3 gap-4 mb-14">
+          {/* Connecting line */}
+          <div className="hidden md:block absolute top-14 left-1/3 right-1/3 h-px bg-gradient-to-r from-rg-accent/30 via-rg-accent/15 to-rg-accent/30 z-0" />
+
           {steps.map((step, i) => (
             <div
               key={step.number}
-              className={`scroll-animate delay-${i * 100} relative p-7 rounded-2xl border border-rg-accent/10 bg-rg-deep/40 card-hover flex flex-col`}
+              className={`scroll-animate delay-${i * 100} relative p-7 rounded-2xl border border-rg-accent/10 bg-rg-deep/40 card-hover flex flex-col z-10`}
             >
-              {/* Connector line between cards */}
-              {i < steps.length - 1 && (
-                <div className="hidden md:block absolute top-1/2 -right-2.5 w-5 h-px bg-rg-accent/20 z-10" />
-              )}
-
-              {/* Number */}
-              <div className="w-12 h-12 rounded-full bg-rg-accent/10 border border-rg-accent/20 flex items-center justify-center mb-5">
-                <span className="font-sora font-black text-xl text-rg-accent">
-                  {step.number}
-                </span>
+              {/* Number circle */}
+              <div className="w-11 h-11 rounded-full border border-rg-accent/25 bg-rg-surface flex items-center justify-center mb-5 text-rg-accent">
+                {step.icon}
               </div>
 
               {/* Badge */}
-              <span className="inline-flex w-fit mb-4 px-3 py-1 rounded-full bg-rg-accent/5 border border-rg-accent/15 font-manrope text-xs font-semibold text-rg-accent">
+              <span className="inline-flex w-fit mb-4 px-2.5 py-1 rounded-md bg-rg-accent/5 border border-rg-accent/12 font-manrope text-[11px] font-semibold text-rg-accent">
                 {step.badge}
               </span>
 
@@ -76,6 +88,11 @@ export default function Process() {
               <p className="font-manrope text-sm text-rg-gray leading-relaxed flex-1">
                 {step.desc}
               </p>
+
+              {/* Step number */}
+              <div className="absolute top-5 right-6 font-sora font-black text-4xl text-rg-accent/10 leading-none">
+                {step.number}
+              </div>
             </div>
           ))}
         </div>
@@ -86,22 +103,25 @@ export default function Process() {
             href={WA_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-3 px-10 py-5 bg-rg-accent text-rg-black font-sora font-bold text-base rounded-full transition-all hover:bg-rg-glow hover:shadow-[0_0_50px_rgba(0,230,118,0.35)] hover:scale-105"
+            className="btn-split inline-flex"
           >
-            Começar meu Diagnóstico Agora
-            <svg
-              width="18"
-              height="18"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              className="group-hover:translate-x-1 transition-transform"
-            >
-              <path d="M3 9h12M9 3l6 6-6 6" />
-            </svg>
+            <span className="btn-split-text text-base px-8 py-4">
+              Começar meu Diagnóstico Agora
+            </span>
+            <span className="btn-split-icon px-5">
+              <svg
+                width="18"
+                height="18"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+              >
+                <path d="M4 9h10M9 4l5 5-5 5" />
+              </svg>
+            </span>
           </a>
-          <p className="font-manrope text-sm text-rg-gray mt-4">
-            Sem compromisso. A conversa é gratuita.
+          <p className="font-manrope text-sm text-rg-gray mt-5">
+            Sem compromisso. A conversa inicial é gratuita.
           </p>
         </div>
       </div>

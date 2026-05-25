@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import SpecialtyTicker from "@/components/SpecialtyTicker";
 import Metrics from "@/components/Metrics";
 import PainPoints from "@/components/PainPoints";
 import Solution from "@/components/Solution";
@@ -15,6 +16,7 @@ export default function Home() {
     <main className="min-h-screen bg-rg-black">
       <Navbar />
       <Hero />
+      <SpecialtyTicker />
       <Metrics />
       <PainPoints />
       <Solution />
