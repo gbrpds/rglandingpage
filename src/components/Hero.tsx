@@ -139,7 +139,7 @@ export default function Hero() {
             <div className="relative rounded-2xl overflow-hidden aspect-[4/5] border border-rg-accent/10">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/team.jpg"
+                src="/team.png"
                 alt="Gabriel e Rodrigo Pereira — Co-fundadores da RG Performance"
                 className="w-full h-full object-cover object-top"
                 onError={(e) => {
